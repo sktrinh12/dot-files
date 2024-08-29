@@ -1,0 +1,11 @@
+
+# Ignore swap files
+*.swp
+
+# Ignore backup files
+*.bak
+*.tmp
+
+# Ignore session files
+.session
+plugin
