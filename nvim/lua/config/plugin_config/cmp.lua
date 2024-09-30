@@ -14,7 +14,7 @@ local kind_icons = {
     Unit = "",
     Value = "🔍",
     Enum = "",
-    Keyword = "",
+    Keyword = "🏷️",
     Snippet = "",
     Color = "🎨",
     File = "📄",
@@ -25,7 +25,7 @@ local kind_icons = {
     Struct = "",
     Event = "",
     Operator = "➕",
-    TypeParameter = "",
+    TypeParameter = "🔠",
 }
 
 cmp.setup({
