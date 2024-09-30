@@ -20,6 +20,11 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
   use 'stevearc/conform.nvim'
   use {
+    'junegunn/fzf',
+    run = ':call fzf#install()' -- Automatically install fzf binary if needed
+  }
+  use 'junegunn/fzf.vim'
+  use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
