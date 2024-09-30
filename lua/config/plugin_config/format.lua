@@ -1,13 +1,12 @@
 require("conform").setup({
   formatters_by_ft = {
-    lua = { "stylua" },
     javascript = { "prettier" },
     typescript = { "prettier" },
     javascriptreact = { "prettier" },
     typescriptreact = { "prettier" },
     json = { "prettier" },
     markdown = { "prettier" },
-    bash = { "beautysh" },
+    sh = { "shfmt" },
     css = { "prettier" },
     scss = { "prettier" },
     python = { "black" },
