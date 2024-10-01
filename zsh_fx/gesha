@@ -1,0 +1,4 @@
+gesha()
+{
+	git log --format=format:"%H" | sed -n "${1} p"
+}

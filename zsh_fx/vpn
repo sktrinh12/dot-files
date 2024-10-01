@@ -1,0 +1,10 @@
+vpn() {
+  SCRIPT_PATH=$HOME/Documents/scripts/terraform/openvpn-ec2/config
+  if [ "$1"=="up" ]; then
+      "$SCRIPT_PATH/main.sh" "$1" 
+  elif [ "$1"=="down" ]; then
+      "$SCRIPT_PATH/main.sh" "$1" 
+  else
+      echo "Invalid argument: $1. Use 'up' to start or 'down' to stop the VPN."
+  fi
+}

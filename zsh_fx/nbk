@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Check if the user is part of the docker group
+if ! groups $USER | grep -q "\bdocker\b"; then
+    echo "User is not part of the 'docker' group. Please add the user to the group and re-login."
+    exit 1
+fi
+
+# Run commands in the context of the docker group
+newgrp docker <<EOF
+CONTR_STATUS=1
+LOG_FILE=/tmp/nbk_cmd_tmp.log
+GREP_CHECK=\$(docker ps -a --format "{{.Image}}:{{.Status}}" | sed -e 's/:/ | /g' | grep jupyter | awk '{print \$3}')
+
+if [ "\$GREP_CHECK" ]; then
+    echo \$GREP_CHECK
+    # CONTR_ID=\$(docker inspect --format="{{.Id}}" jupyter/datascience-notebook)
+    CONTR_ID=\$(docker ps -a | grep jupyter | awk '{print \$1}')
+    # echo \$CONTR_ID
+    if [ "\$GREP_CHECK" = "Up" ]; then
+        echo "jupyter notebook is already running.."
+        CONTR_STATUS=0
+    fi
+else
+    echo "starting docker jupyter notebook container..."
+    docker run -d --rm -p 8888:8888 -v /home/spencer:/home/jovyan/work jupyter/datascience-notebook
+    GREP_CHECK=\$(docker ps -a --format "{{.Image}}:{{.Status}}" | sed -e 's/:/ | /g' | grep jupyter | awk '{print \$3}')
+    echo \$GREP_CHECK
+    # CONTR_ID=\$(docker inspect --format="{{.Id}}" jupyter/datascience-notebook)
+    CONTR_ID=\$(docker ps -a | grep jupyter | awk '{print \$1}')
+    echo "CONTR_ID: \$CONTR_ID"
+    # docker start \$CONTR_ID
+fi
+
+if [ "\$CONTR_STATUS" -ne 0 ]; then
+    echo "waiting for container to start-up"
+    sleep 5
+fi
+
+# Get the logs from the container
+docker logs \$CONTR_ID 2> \$LOG_FILE
+cat \$LOG_FILE
+
+sleep 0.25
+
+# Extract the URL from the log file
+# URL=\$(sed -n 's/\(http:\/\/127.*\)/\1/p' \$LOG_FILE | sed '$!d' | sed 's/^.*or //g' | sed 's/?/lab?/g')
+
+URL=\$(sed -n 's/\(http:\/\/127\.0\.0\.1:[0-9]\{4\}\/lab?token=.*$\).*/\1/p' \$LOG_FILE | grep -v '\[I ' | awk '{\$1=\$1; print}')
+
+echo -e "\nURL: \$URL\n"
+rm \$LOG_FILE
+
+# Open the URL in Firefox
+/usr/bin/firefox \$URL
+EOF

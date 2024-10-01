@@ -1,0 +1,4 @@
+elsrch()
+{
+	sh "$HOME/Documents/elasticsrch_sh.sh"
+}

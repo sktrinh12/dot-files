@@ -1,0 +1,6 @@
+pynvim()
+{
+	echo "opening nvim in ~/Documents/pythonScripts/..." & \
+	cd /Users/trinhsk/Documents/pythonScripts && \
+	nvim
+}

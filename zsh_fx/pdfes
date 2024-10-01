@@ -1,0 +1,4 @@
+function pdfes()
+{
+	sh "$HOME/Documents/pdfminer_sh.sh"
+}

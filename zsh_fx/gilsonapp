@@ -1,0 +1,3 @@
+gilsonapp() {
+	sh /Users/trinhsk/Documents/GitRepos/gilson_webapp/tmux_session.sh;
+}

@@ -1,0 +1,8 @@
+jupnbk()
+{
+	echo "starting jupyter notebook" && \
+	conda activate py37 && \
+	cd /home/spencer/Documents/jupyterLab/ && \
+	jupyter notebook
+}
+

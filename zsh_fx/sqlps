@@ -1,0 +1,20 @@
+sqlps() {
+    cwd=`pwd`
+    cd $HOME/Documents/db
+    if [ $# -eq 2 ] && [ $2=="-p" ]; then #check if there are two arguments passed
+	    output=$(sqlite3 -batch UsrPs.db "SELECT PASSWORD FROM USERPASS WHERE TITLE LIKE '%$1%';")
+	    echo "$output" && echo "$output" | xclip -sel clip
+    else
+	if [ ! -z "$1" ] && [ -z "$2" ]; then #check if arg 1 is not null string; and arg 2 is null string
+	    output=$(sqlite3 -batch UsrPs.db "SELECT * FROM USERPASS WHERE TITLE LIKE '%$1%';")
+	    if [ -z "$output" ]; then
+		    echo "did not find a match for that string, $1"
+	    else
+		    echo "$output"
+	    fi
+	else
+	    echo "invalid command, missing query argument"
+	fi
+    fi
+    cd $cwd
+}

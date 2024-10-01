@@ -1,0 +1,4 @@
+dstp() {
+  docker ps -a | sed '1d' | fzf -m | awk '{print $1}' | xargs docker stop
+}
+#dstp [fuzzy pattern] - choose a docker container to stop

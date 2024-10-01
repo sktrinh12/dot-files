@@ -1,0 +1,7 @@
+upabsdata()
+{
+	echo "attempting to run absUp_oracle.py..." && \
+	conda activate py37 && \
+	python /Users/trinhsk/Documents/uploadAbs_oracle.py all
+}
+

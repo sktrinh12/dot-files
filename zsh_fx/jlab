@@ -1,0 +1,5 @@
+jlab() {
+	conda activate py38 && \
+	cd $HOME/Documents/jupyterLab && \
+	jupyter lab
+}

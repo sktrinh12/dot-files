@@ -1,0 +1,4 @@
+drcv() { 
+  docker ps -a | sed '1d' | fzf -m | awk '{print $1}' | xargs docker rm -v
+}
+# drcv [FUZZY PATTERN] - Choose a docker container to remove (and associated volumes) #sed '1d' remove the first line

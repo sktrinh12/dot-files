@@ -1,0 +1,8 @@
+dckcid()
+{
+if [ "$#" -eq 0 ]; then
+	echo 'requires arguments'
+else
+	echo `docker ps -a | grep -e "$1" | awk '{print$1}'`
+fi
+}

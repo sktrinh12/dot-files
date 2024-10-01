@@ -1,0 +1,8 @@
+mntdr()
+{
+	address_n='fr-s-dtp-npsg02.nih.gov/npsg'
+	address_m='smb://fssrgd-cssl01p.ncifcrf.gov/DTP_FS/fr-s-dtp-fs04/npsg_storage/f_drive/m_drive'
+	open "smb://${address_n}" && \
+	open "smb://${address_m}"
+}
+

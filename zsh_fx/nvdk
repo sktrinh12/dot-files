@@ -1,0 +1,10 @@
+nvdk() {
+
+docker run \
+        --rm -it \
+        -v $(pwd):/mnt/workspace \
+	-v $HOME/Documents/GitRepos/neovim_docker:/home/neovim/.config/nvim \
+        neovim-docker:latest \
+        "$@"
+}
+

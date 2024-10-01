@@ -1,0 +1,18 @@
+upqcdat()
+{
+	cwd=`pwd`
+	cd '/Users/trinhsk/Documents/'
+	conda activate py37
+	echo 'running uploadAbs_oracle.py script!'
+	#if [ '$#' -eq 2 ]; then
+	#	python uploadAbs_oracle.py $1 $2
+	#elif [ '$#' -eq 1 ]; then
+	#	python uploadAbs_oracle.py $1
+	if [ "$#" -eq 0 ]; then
+		echo 'requires arguments'
+	else
+		python uploadAbs_oracle.py $@
+	fi
+	cd $cwd
+}
+

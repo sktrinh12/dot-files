@@ -1,0 +1,19 @@
+lscmd()
+{
+	echo '\t\tupqcdat -> update qc data\r\n
+	\tcmqcfi -> compare qc files\r\n
+	\tcdss -> cd to second stage dir in N drive\r\n
+	\tmntdr -> mount shared drives\r\n
+	\tscpi -> copy to raspberry pi\r\n
+	\tjupnbk -> open jupter notebook\r\n
+	\tupabsdata -> upload absorbance data in oracle\r\n
+	\tpynvim -> open nvim in pythonScripts directory\r\n
+	\tdckcid -> get docker container id with the search term argument\r\n
+	\tpdfes -> parse PDF file and output text\r\n
+	\telsrch -> upload data into elastic search index\r\n
+	\tgesha -> git extract SHA-1 by commit number\r\n
+	\tnvdk -> open neovim-docker instance in cwd\r\n
+	\tdrcv -> remove docker containers and volumes using fzf\r\n
+	\tdri -> remove docker images using fzf\r\n
+	\tdstp -> stop docker container using fzf\r\n'
+}

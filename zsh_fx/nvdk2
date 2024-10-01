@@ -1,0 +1,8 @@
+nvdk2() {
+
+docker run \
+        --rm -it \
+        -v $(pwd):/mnt/workspace \
+        neovim-docker-v2:latest \
+        "$@"
+}

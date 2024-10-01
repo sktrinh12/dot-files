@@ -1,0 +1,11 @@
+# purge docker container and image
+purge_docker() {
+  local rmi="$2"
+  echo 'removing docker container ' $1
+  VAR=$(docker ps -a | grep $1 | awk '{print $1}')
+  docker stop $VAR && docker rm $VAR 
+  if ((rmi == 0)); then
+	echo "removing images for $1 as well"
+  	docker rmi $1
+  fi
+}

@@ -1,0 +1,5 @@
+scpi() #copy to pi
+{
+	scp "$2 pi\@raspberrypi.local\:home\/pi\/$1"
+	echo "copied $2 to $1"
+}

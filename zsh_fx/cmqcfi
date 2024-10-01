@@ -1,0 +1,7 @@
+cmqcfi()
+{
+	set_100="${1}100"
+	set_200="${1}200"
+	/Users/trinhsk/Documents/comp_qc_fisz.sh $set_100 $set_200 
+}
+
