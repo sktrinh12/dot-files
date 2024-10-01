@@ -93,7 +93,7 @@ ZSH_THEME="robbyrussell"
 # Enable fzf key bindings and completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-autoload -Uz compinit dri drcv dstp sqlps vpn wvpn
+autoload -Uz compinit dri drcv dstp sqlps vpn wvpn nbk
 compinit
 
 # Which plugins would you like to load?
