@@ -1,5 +1,8 @@
 #!/bin/bash
 
-ln -s $HOME/Documents/scripts/dot-files/zshrc $HOME/.zshrc
-ln -s $HOME/Documents/scripts/dot-files/tmux.conf $HOME/.tmux.conf
-ln -s $HOME/Documents/scripts/dot-files/nvim $HOME/.config/nvim
+DIR_PATH=$(dirname "$0")
+
+ln -s "$DIR_PATH/zshrc $HOME/.zshrc"
+ln -s "$DIR_PATH/.tmux.conf $HOME/.tmux.conf"
+ln -s "$DIR_PATH/nvim $HOME/.config/nvim"
+ln -s "$DIR_PATH/zsh_fx $HOME/zsh_fx"
