@@ -14,7 +14,7 @@ GREP_CHECK=\$(docker ps -a --format "{{.Image}}:{{.Status}}" | sed -e 's/:/ | /g
 
 if [ "\$GREP_CHECK" ]; then
     echo \$GREP_CHECK
-    # CONTR_ID=\$(docker inspect --format="{{.Id}}" jupyter/datascience-notebook)
+    # CONTR_ID=\$(docker inspect --format="{{.Id}}" jupyter-notebook)
     CONTR_ID=\$(docker ps -a | grep jupyter | awk '{print \$1}')
     # echo \$CONTR_ID
     if [ "\$GREP_CHECK" = "Up" ]; then
@@ -23,10 +23,10 @@ if [ "\$GREP_CHECK" ]; then
     fi
 else
     echo "starting docker jupyter notebook container..."
-    docker run -d --rm -p 8888:8888 -v /home/spencer:/home/jovyan/work jupyter/datascience-notebook
+    docker run -d --rm -p 8888:8888 -v /home/spencer:/home/jovyan/work jupyter-notebook
     GREP_CHECK=\$(docker ps -a --format "{{.Image}}:{{.Status}}" | sed -e 's/:/ | /g' | grep jupyter | awk '{print \$3}')
     echo \$GREP_CHECK
-    # CONTR_ID=\$(docker inspect --format="{{.Id}}" jupyter/datascience-notebook)
+    # CONTR_ID=\$(docker inspect --format="{{.Id}}" jupyter-notebook)
     CONTR_ID=\$(docker ps -a | grep jupyter | awk '{print \$1}')
     echo "CONTR_ID: \$CONTR_ID"
     # docker start \$CONTR_ID
@@ -51,6 +51,6 @@ URL=\$(sed -n 's/\(http:\/\/127\.0\.0\.1:[0-9]\{4\}\/lab?token=.*$\).*/\1/p' \$L
 echo -e "\nURL: \$URL\n"
 rm \$LOG_FILE
 
-# Open the URL in Firefox
-/usr/bin/firefox \$URL
+# Open the URL in google 
+/usr/bin/google-chrome \$URL
 EOF
