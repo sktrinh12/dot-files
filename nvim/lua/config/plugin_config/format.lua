@@ -7,6 +7,7 @@ require("conform").setup({
     json = { "prettier" },
     markdown = { "prettier" },
     sh = { "shfmt" },
+    sql = { "sqlfluff" },
     css = { "prettier" },
     scss = { "prettier" },
     python = { "black" },
