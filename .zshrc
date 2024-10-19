@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export NODEJS_HOME=/usr/local/nodejs
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/bin:$PATH
 export FZF_DEFAULT_OPTS='--preview "batcat --style=plain --color=always {}" --preview-window=right:50%'
 export FZF_CTRL_R_OPTS="--bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -selection clipboard)+abort'
   --color header:italic
@@ -28,6 +28,9 @@ alias tf='terraform'
 alias ll='ls -la'
 alias zs="source $HOME/.zshrc"
 alias zz="vi $HOME/.zshrc"
+alias teams="$HOME/Documents/scripts/teams.sh"
+alias vpn="$HOME/Documents/scripts/remote_vpn.sh"
+alias check="$HOME/Documents/scripts/startup_curl.sh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -93,7 +96,7 @@ ZSH_THEME="robbyrussell"
 # Enable fzf key bindings and completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-autoload -Uz compinit dri drcv dstp sqlps vpn wvpn nbk
+autoload -Uz compinit dri drcv dstp sqlps ovpn wvpn nbk
 compinit
 
 # Which plugins would you like to load?
@@ -147,4 +150,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
