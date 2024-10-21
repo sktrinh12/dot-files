@@ -55,8 +55,6 @@ alias ga="git add ${1}"
 alias gcc="git commit -m ${1}"
 alias gc="git commit"
 alias tf='terraform'
-alias ls="eza --color=always --long --git --icons=always --no-time --no-user --no-permissions"
-alias la="eza --color=always --long --git --icons=always"
 alias zs="source $HOME/.zshrc"
 alias zz="vi $HOME/.zshrc"
 alias teams="$HOME/Documents/scripts/teams.sh"
@@ -141,7 +139,7 @@ plugins=(
   zsh-syntax-highlighting 
 )
 
-# source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 fpath=(~/zsh_fx "${fpath[@]}")
 typeset -U PATH fpath
@@ -181,3 +179,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+alias ll="eza --color=always --long --git --icons=always --no-time --no-user --no-permissions"
+alias la="eza --color=always --long --git --icons=always"
