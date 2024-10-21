@@ -1,11 +1,41 @@
 # If you come from bash you might have to change your $PATH.
 export NODEJS_HOME=/usr/local/nodejs
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/bin:$PATH
-export FZF_DEFAULT_OPTS='--preview "batcat --style=plain --color=always {}" --preview-window=right:50%'
+export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'batcat -n --color=always --line-range :500 {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'eza --tree --color=always {} | head -200'"
+export FZF_DEFAULT_OPTS='--border --info=inline --layout=reverse --height 60%'
 export FZF_CTRL_R_OPTS="--bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -selection clipboard)+abort'
   --color header:italic
-  --header 'Press CTRL-Y to copy command into clipboard'
-  --preview '' "
+  --header 'Press CTRL-Y to copy command into clipboard'"
+export BAT_THEME=tokyonight_night
+
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'batcat -n --color=always --line-range :500  {}' "$@" ;;
+  esac
+}
 # Ensure that tmux doesn't change the TERM variable if it's already set correctly
 # Set TERM to screen-256color if using tmux
 if [[ -n "$TMUX" ]]; then
@@ -25,7 +55,8 @@ alias ga="git add ${1}"
 alias gcc="git commit -m ${1}"
 alias gc="git commit"
 alias tf='terraform'
-alias ll='ls -la'
+alias ls="eza --color=always --long --git --icons=always --no-time --no-user --no-permissions"
+alias la="eza --color=always --long --git --icons=always"
 alias zs="source $HOME/.zshrc"
 alias zz="vi $HOME/.zshrc"
 alias teams="$HOME/Documents/scripts/teams.sh"
@@ -110,7 +141,7 @@ plugins=(
   zsh-syntax-highlighting 
 )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 fpath=(~/zsh_fx "${fpath[@]}")
 typeset -U PATH fpath
