@@ -31,10 +31,7 @@ return require('packer').startup(function(use)
     run = ':call fzf#install()' -- Automatically install fzf binary if needed
   }
   use 'junegunn/fzf.vim'
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+  use { "ibhagwan/fzf-lua"}
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
