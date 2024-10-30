@@ -46,6 +46,7 @@ export ZSH="$HOME/.oh-my-zsh"
 alias ..='cd ..'
 alias cat='batcat'
 alias vi='nvim'
+alias cow='$HOME/Documents/scripts/dot-files/zsh_fx/cowsay-prompt.sh'
 alias gp="git push origin main"
 alias gco="git checkout ${1} ${2}"
 alias gpl="git pull ${1} ${2}"
@@ -182,3 +183,5 @@ unset __conda_setup
 
 alias ll="eza --color=always --long --git --icons=always --no-time --no-user --no-permissions"
 alias la="eza --color=always --long --git --icons=always"
+
+export PROMPT='%F{green}🐧 %F{blue}%~ %F{reset}%# '
