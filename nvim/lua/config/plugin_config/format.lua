@@ -1,4 +1,17 @@
-require("conform").setup({
+local conform = require("conform")
+
+local function sql_format()
+  return {
+    command = "python",
+    args = { os.getenv("HOME") .. "/Documents/scripts/sql_format.py", "-" },
+    stdin = true,
+  }
+end
+
+conform.setup({
+formatters = {
+    sqlparse = sql_format(),
+  },
   formatters_by_ft = {
     javascript = { "prettier" },
     typescript = { "prettier" },
@@ -7,7 +20,7 @@ require("conform").setup({
     json = { "prettier" },
     markdown = { "prettier" },
     sh = { "shfmt" },
-    sql = { "sqlfluff" },
+    sql = { "sqlparse" },
     css = { "prettier" },
     scss = { "prettier" },
     python = { "black" },
@@ -19,6 +32,6 @@ vim.keymap.set({ "n", "v" }, "<leader>m", function()
   require("conform").format({
     lsp_fallback = true,
     async = false,
-    timeout_ms = 65500,
+    timeout_ms = 60000,
   })
 end, { desc = "Format file or range (in visual mode)" })
