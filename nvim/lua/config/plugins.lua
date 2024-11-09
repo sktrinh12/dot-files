@@ -7,6 +7,14 @@ return {
   },
 
   {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function()
+      require("config.plugin_config.treesitter")
+    end
+  },
+
+  {
     "folke/tokyonight.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
@@ -40,14 +48,6 @@ return {
     'nvim-lualine/lualine.nvim',
     config = function()
       require("config.plugin_config.lualine")
-    end
-  },
-
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    config = function()
-      require("config.plugin_config.treesitter")
     end
   },
 
