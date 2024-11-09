@@ -41,3 +41,11 @@ vim.api.nvim_set_keymap('n', '<leader>cd', ':cd ~/.config/nvim/lua/config<CR>:e 
 
 -- key map google chrome browser open url link
 vim.api.nvim_set_keymap("n", "gx", [[:lua os.execute('google-chrome ' .. vim.fn.expand('<cfile>'))<CR>]], { noremap = true, silent = true })
+
+-- Set the commentstring for SQL files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "sql",
+  callback = function()
+    vim.bo.commentstring = "-- %s"
+  end,
+})
