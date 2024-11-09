@@ -9,5 +9,3 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.cmd [[
   highlight SpellBad cterm=undercurl guifg=#FF6F61 guibg=NONE gui=undercurl
 ]]
-
-vim.keymap.set("n", "<leader>s", require("fzf-lua").spell_suggest, { desc = "Spelling Suggestions" })
