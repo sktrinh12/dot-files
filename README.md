@@ -1,13 +1,13 @@
 # dot-files 
 
 ### nvim-lua
-nvim lua config files and setup
+- nvim lua config files and setup
 
 ### zshrc
-zshrc file
+- zshrc file
 
 ### tmux
-tmux config file
+- tmux config file
 - need to instlal TPM and cappuchin colour theme
 
 
