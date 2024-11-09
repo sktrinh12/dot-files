@@ -1,4 +1,4 @@
 require("config.options")
-require("config.plugins")
-require("config.plugin_config")
-
+require("config.lazy")
+require("config.plugin_config.keymaps")
+require("config.plugin_config.spelling")
