@@ -34,15 +34,13 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
+      'L3MON4D3/LuaSnip',
     },
     config = function()
-      -- ...
+      require("config.plugin_config.cmp")
     end,
   },
-
-  'L3MON4D3/LuaSnip',
-
-  'saadparwaiz1/cmp_luasnip',
 
   {
     'nvim-lualine/lualine.nvim',
