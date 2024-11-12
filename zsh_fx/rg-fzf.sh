@@ -16,4 +16,4 @@ fzf --ansi --disabled --query "$INITIAL_QUERY" \
     --header 'CTRL-T: Switch between ripgrep/fzf' \
     --preview 'batcat -n --color=always {1} --highlight-line {2}' \
     --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-    --bind 'enter:become(vim {1} +{2})'
+    --bind 'enter:become(/opt/nvim-linux64/bin/nvim {1} +{2})'
