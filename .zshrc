@@ -36,6 +36,7 @@ _fzf_comprun() {
     *)            fzf --preview 'batcat -n --color=always --line-range :500  {}' "$@" ;;
   esac
 }
+
 # Ensure that tmux doesn't change the TERM variable if it's already set correctly
 # Set TERM to screen-256color if using tmux
 if [[ -n "$TMUX" ]]; then
