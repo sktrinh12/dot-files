@@ -8,6 +8,6 @@ else
   text=$(/usr/games/fortune)
 fi
 
-# make into list and randomly pick one
-cowselect="$(/usr/games/cowsay -l | sed "1 d" | tr ' ' '\n' | /usr/bin/shuf -n 1)"
-echo ${text} | /usr/games/cowsay -f "$cowselect" -W 10 | /usr/games/lolcat
+# -p “Paranoid”, uses @@ eyes
+# 50 is the bubble text width
+echo ${text} | /usr/games/cowsay -p -W 50 | /usr/games/lolcat
