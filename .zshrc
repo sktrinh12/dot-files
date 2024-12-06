@@ -128,7 +128,7 @@ export EDITOR='nvim'
 # Enable fzf key bindings and completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-autoload -Uz compinit dri drcv dstp sqlps ovpn wvpn nbk
+autoload -Uz compinit dri drcv dstp sqlps ovpn wvpn nbk tlog
 compinit
 
 # Which plugins would you like to load?
