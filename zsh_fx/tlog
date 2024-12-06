@@ -1,0 +1,5 @@
+tlog() {
+    echo "Arguments: $@"
+    output=$(python $HOME/Documents/RCH/Wall_StreetLLC/Payroll/log_time.py "$@")
+    echo "$output" | jq '.'
+}
