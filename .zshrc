@@ -1,9 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 export NODEJS_HOME=/usr/local/nodejs
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/bin:$PATH
-export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix --exclude .git'
+export FZF_DEFAULT_COMMAND='fdfind --hidden --strip-cwd-prefix --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_ALT_C_COMMAND="fdfind --type=d --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'batcat -n --color=always --line-range :500 {}'
@@ -15,14 +15,14 @@ export FZF_DEFAULT_OPTS='--border --info=inline --layout=reverse --height 60%'
 export FZF_CTRL_R_OPTS="--bind 'ctrl-y:execute-silent(echo -n {2..} | xclip -selection clipboard)+abort'
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
-export BAT_THEME=tokyonight_night
+export BAT_THEME="Catppuccin Mocha"
 
 _fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
+  fdfind --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
+  fdfind --type d --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_comprun() {
@@ -170,12 +170,12 @@ typeset -U PATH fpath
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/spencer/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/spencer-trinh/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/spencer/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/spencer/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/spencer-trinh/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/spencer-trinh/miniconda3/etc/profile.d/conda.sh"
     else
         export PATH="/home/spencer/miniconda3/bin:$PATH"
     fi
