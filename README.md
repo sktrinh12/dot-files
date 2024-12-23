@@ -54,11 +54,25 @@ fc-cache -fv
 fc-list | grep "Hack Nerd Font"
 ```
 
-### miniconda:
+### miniconda install:
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 rm Miniconda3-latest-Linux-x86_64.sh
 ~/miniconda3/bin/conda init
 conda update -n base -c defaults conda
+```
+
+### git-credentials-manager install:
+```bash
+wget https://github.com/git-ecosystem/git-credential-manager/releases/download/v{VERSION}/gcm-linux_amd64.{VERSION}.tar.gz
+tar -xvzf gcm-linux_amd64.{VERSION}.tar.gz
+sudo mkdir -p /usr/local/git-credential-manager
+sudo mv git-credential-manager libHarfBuzzSharp.so libSkiaSharp.so /usr/local/git-credential-manager
+sudo ln -s /usr/local/git-credential-manager/git-credential-manager /usr/local/bin/git-credential-manager
+git config --global credential.helper "/usr/local/bin/git-credential-manager"
+git-credential-manager --version
+rm -rf gcm-linux_amd64.{VERSION}.tar.gz
+git config --global credential.credentialStore cache 
+git config --global credential.credentialStore
 ```
