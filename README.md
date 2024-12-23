@@ -14,10 +14,35 @@
 ### batcat config:
 ```bash
 mkdir -p "$(batcat --config-dir)/themes"
-cd "$(batcat --config-dir)/themes"
-# Replace _night in the lines below with _day, _moon, or _storm if needed.
-curl -O https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/sublime/tokyonight_night.tmTheme
+wget -P "$(batcat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 batcat cache --build
-batcat --list-themes | grep tokyo
-echo 'export BAT_THEME="tokyonight_night"' >> "$HOME/.zshrc"
+batcat --list-themes | grep -i catppuccin 
+```
+
+### fzf install:
+```bash
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+
+### tmux install:
+
+```bash
+sudo apt install tmux
+# for tpm install of plugins
+Press prefix + I (capital i, as in Install) to fetch the plugin
+```
+
+### gnome terminal catppuccin theme:
+```bash
+curl -L https://raw.githubusercontent.com/catppuccin/gnome-terminal/v1.0.0/install.py | python3 -
+# then select profile in settings and add the `tmux` command in custom shell
+```
+
+### nerd font:
+```bash
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip
+unzip Hack.zip -d ~/.local/share/fonts
+fc-cache -fv
+fc-list | grep "Hack Nerd Font"
 ```
