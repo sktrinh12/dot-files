@@ -17,6 +17,11 @@ sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 # in zshrc
 export PATH="$PATH:/opt/nvim-linux64/bin"
+# install conform formatters
+python3 -m pip install sqlparse
+npm install -g prettier
+sudo apt install shfmt
+python3 -m pip install black
 ```
 
 ### batcat config:
@@ -75,4 +80,27 @@ git-credential-manager --version
 rm -rf gcm-linux_amd64.{VERSION}.tar.gz
 git config --global credential.credentialStore cache 
 git config --global credential.credentialStore
+```
+
+### postman install:
+```bash
+# download the tar file from website
+tar -xvzf Postman-linux-x64.tar.gz
+sudo mv Postman /opt/
+sudo ln -s /opt/postman-linux-x64/Postman/Postman /usr/local/bin/postman
+vi ~/.local/share/applications/postman.desktop
+
+# create this file with content:
+[Desktop Entry]
+Version=1.0
+Name=Postman
+Comment=Postman API Client
+Exec=/opt/postman-linux-x64/Postman/Postman %U
+Icon=/opt/postman-linux-x64/Postman/app/resources/app/assets/icon.png
+Terminal=false
+Type=Application
+Categories=Development;
+
+# then change file permissions
+chmod +x ~/.local/share/applications/postman.desktop
 ```
