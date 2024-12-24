@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export NODEJS_HOME=/usr/local/nodejs
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/sqldeveloper/bin:$PATH
 export FZF_DEFAULT_COMMAND='fdfind --hidden --strip-cwd-prefix --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fdfind --type=d --hidden --strip-cwd-prefix --exclude .git"
@@ -146,6 +146,8 @@ source $ZSH/oh-my-zsh.sh
 
 fpath=(~/zsh_fx "${fpath[@]}")
 typeset -U PATH fpath
+
+bindkey -v
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
