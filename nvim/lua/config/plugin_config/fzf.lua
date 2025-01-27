@@ -14,7 +14,7 @@ require('fzf-lua').setup({
     bat = {
       cmd             = "batcat",
       args            = "--color=always --style=numbers,changes --line-range :200",
-      theme           = 'tokyonight_night',
+      theme           = 'Catppuccin Mocha',
     },
   },
 })
