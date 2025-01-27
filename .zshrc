@@ -61,8 +61,9 @@ alias zs="source $HOME/.zshrc"
 alias zz="vi $HOME/.zshrc"
 alias teams="$HOME/Documents/scripts/teams.sh"
 alias vpn="$HOME/Documents/scripts/remote_vpn.sh"
+alias mvpn="$HOME/Documents/scripts/terraform/wireguard-ec2/config/main.sh"
 alias check="$HOME/Documents/scripts/startup_curl.sh"
-alias rf="$HOME/Documents/scripts/dot-files/zsh_fx/rg-fzf.sh"
+alias rf="$HOME/Documents/dot-files/zsh_fx/rg-fzf.sh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
