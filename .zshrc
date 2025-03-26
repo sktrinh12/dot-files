@@ -1,9 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 export NODEJS_HOME=/usr/local/nodejs
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/sqldeveloper/bin:$PATH
-export FZF_DEFAULT_COMMAND='fdfind --hidden --strip-cwd-prefix --exclude .git'
+export FZF_DEFAULT_COMMAND='fdfind --hidden --no-ignore --strip-cwd-prefix --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fdfind --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_ALT_C_COMMAND="fdfind --type=d --hidden --no-ignore --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'batcat -n --color=always --line-range :500 {}'
@@ -130,7 +130,6 @@ export EDITOR='nvim'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 autoload -Uz compinit dri drcv dstp sqlps ovpn wvpn nbk tlog
-compinit
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -190,3 +189,7 @@ alias ll="eza --color=always --long --git --icons=always --no-time --no-user --n
 alias la="eza --color=always --long --git --icons=always"
 
 export PROMPT='%F{green}🐧 %F{blue}%~ %F{reset}%# '
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
