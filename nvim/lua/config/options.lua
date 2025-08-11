@@ -46,3 +46,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.commentstring = "-- %s"
   end,
 })
+
+-- Expand 'cc' into 'CodeCompanion' in the command line
+vim.cmd([[cab cc CodeCompanion]])
