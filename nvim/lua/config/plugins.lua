@@ -91,6 +91,18 @@ return {
     end,
   },
 
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "hrsh7th/nvim-cmp",
+    },
+    cmd = { "CodeCompanion", "CodeCompanionChat" },
+    config = function()
+      require("config.plugin_config.codecompanion")
+    end,
+  },
   -- if some code requires a module from an unloaded plugin, it will be automatically loaded.
   -- So for api plugins like devicons, we can always set lazy=true
   -- { "nvim-tree/nvim-web-devicons", lazy = true },
