@@ -1,4 +1,6 @@
 # If you come from bash you might have to change your $PATH.
+export GEMINI_API_KEY=$(cat ~/Documents/creds/gemini_api)
+export MISTRAL_API_KEY=$(cat ~/Documents/creds/mistral_api)
 export NODEJS_HOME=/usr/local/nodejs
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/sqldeveloper/bin:$PATH
 export FZF_DEFAULT_COMMAND='fdfind --hidden --no-ignore --strip-cwd-prefix --exclude .git'
@@ -44,6 +46,11 @@ if [[ -n "$TMUX" ]]; then
 fi
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+alias tor='() {
+  local OLD_DIR=$(pwd);
+  cd "$HOME/tor-browser" && ./start-tor-browser.desktop;
+  cd "$OLD_DIR";
+}'
 alias ..='cd ..'
 alias cat='batcat'
 alias vi='nvim'
