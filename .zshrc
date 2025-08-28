@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export GEMINI_API_KEY=$(cat ~/Documents/creds/gemini_api)
-export MISTRAL_API_KEY=$(cat ~/Documents/creds/mistral_api)
+export OPENROUTER_API_KEY=$(cat ~/Documents/creds/openrouter)
 export NODEJS_HOME=/usr/local/nodejs
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/sqldeveloper/bin:$PATH
 export FZF_DEFAULT_COMMAND='fdfind --hidden --no-ignore --strip-cwd-prefix --exclude .git'
