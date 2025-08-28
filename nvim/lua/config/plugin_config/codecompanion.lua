@@ -1,23 +1,22 @@
 require("codecompanion").setup({
   adapters = {
-    gemini = function()
-      return require("codecompanion.adapters").extend("gemini", {
+    openrouter = function()
+      return require("codecompanion.adapters").extend("openai_compatible", {
         env = {
-          api_key = "GEMINI_API_KEY",
+          url = "https://openrouter.ai/api/v1",
+          api_key = vim.env.OPENROUTER_API_KEY,
+          chat_url = "/chat/completions",
         },
-      })
-    end,
-    mistral = function()
-      return require("codecompanion.adapters").extend("mistral", {
-        env = {
-          api_key = "MISTRAL_API_KEY",
+        url = "https://openrouter.ai/api/v1/chat/completions",
+        schema = {
+          model = { default = "deepseek/deepseek-r1-0528:free" },
         },
       })
     end,
   },
   strategies = {
-    chat = { adapter = "mistral" },
-    inline = { adapter = "gemini" },
+    chat = { adapter = "openrouter" },
+    inline = { adapter = "openrouter" },
   },
   opts = {
     log_level = "DEBUG",
