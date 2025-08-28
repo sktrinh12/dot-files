@@ -7,9 +7,16 @@ require("codecompanion").setup({
         },
       })
     end,
+    mistral = function()
+      return require("codecompanion.adapters").extend("mistral", {
+        env = {
+          api_key = "MISTRAL_API_KEY",
+        },
+      })
+    end,
   },
   strategies = {
-    chat = { adapter = "gemini" },
+    chat = { adapter = "mistral" },
     inline = { adapter = "gemini" },
   },
   opts = {
