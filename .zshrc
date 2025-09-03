@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export OPENROUTER_API_KEY=$(cat ~/Documents/creds/openrouter)
 export NODEJS_HOME=/usr/local/nodejs
+export FIB_SEQ="1 2 3 5 8 13 21 34 55 89"
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/sqldeveloper/bin:$PATH
 export FZF_DEFAULT_COMMAND='fdfind --hidden --no-ignore --strip-cwd-prefix --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
