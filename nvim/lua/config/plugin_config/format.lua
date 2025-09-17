@@ -8,9 +8,18 @@ local function sql_format()
   }
 end
 
+local function ruff_format()
+  return {
+    command = "ruff",
+    args = { "format", "--stdin-filename", "%" },
+    stdin = true,
+  }
+end
+
 conform.setup({
 formatters = {
     sqlparse = sql_format(),
+    ruff = ruff_format(),
   },
   formatters_by_ft = {
     javascript = { "prettier" },
@@ -23,6 +32,6 @@ formatters = {
     sql = { "sqlparse" },
     css = { "prettier" },
     scss = { "prettier" },
-    python = { "black" },
+    python = { "ruff" },
     },
 })
