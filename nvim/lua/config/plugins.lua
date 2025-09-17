@@ -1,5 +1,5 @@
 return {
- {
+  {
     'nvim-tree/nvim-tree.lua',
     config = function()
       require("config.plugin_config.nvim-tree")
@@ -9,6 +9,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    event = { "BufReadPost", "BufNewFile" }, -- Fix: Load after buffers init to prevent extmark range errors
     config = function()
       require("config.plugin_config.treesitter")
     end
