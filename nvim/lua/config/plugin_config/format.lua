@@ -11,7 +11,11 @@ end
 local function ruff_format()
   return {
     command = "ruff",
-    args = { "format", "--stdin-filename", "%" },
+    args = {
+      "format",
+      "--stdin-filename",
+      vim.api.nvim_buf_get_name(0),
+ },
     stdin = true,
   }
 end
