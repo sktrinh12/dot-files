@@ -54,6 +54,7 @@ alias tor='() {
 alias ..='cd ..'
 alias cat='batcat'
 alias vi='nvim'
+alias k='kubectl'
 alias cow='$HOME/Documents/scripts/dot-files/zsh_fx/cowsay-prompt.sh'
 alias gp="git push origin main"
 alias gco="git checkout ${1} ${2}"
@@ -134,9 +135,12 @@ export EDITOR='nvim'
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Enable fzf key bindings and completion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-autoload -Uz compinit dri drcv dstp sqlps ovpn wvpn nbk tlog
+typeset -U PATH fpath
+fpath=(~/zsh_fx "${fpath[@]}")
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+autoload -Uz dri drcv dstp sqlps ovpn wvpn nbk tlog
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -147,12 +151,10 @@ plugins=(
   git
   fzf-zsh-plugin
   zsh-syntax-highlighting 
+  kubectl-autocomplete
 )
 
 source $ZSH/oh-my-zsh.sh
-
-fpath=(~/zsh_fx "${fpath[@]}")
-typeset -U PATH fpath
 
 bindkey -v
 
