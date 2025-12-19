@@ -2,7 +2,7 @@
 export OPENROUTER_API_KEY=$(cat ~/Documents/creds/openrouter)
 export NODEJS_HOME=/usr/local/nodejs
 export FIB_SEQ="1 2 3 5 8 13 21 34 55 89"
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/sqldeveloper/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/sqldeveloper/bin:/usr/local/go/bin:$HOME/sratoolkit.3.3.0-ubuntu64/bin:$PATH
 export FZF_DEFAULT_COMMAND='fdfind --hidden --no-ignore --strip-cwd-prefix --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fdfind --type=d --hidden --no-ignore --strip-cwd-prefix --exclude .git"
@@ -51,6 +51,7 @@ alias tor='() {
   cd "$HOME/tor-browser" && ./start-tor-browser.desktop;
   cd "$OLD_DIR";
 }'
+alias nf='nextflow'
 alias ..='cd ..'
 alias cat='batcat'
 alias vi='nvim'
@@ -149,14 +150,11 @@ autoload -Uz dri drcv dstp sqlps ovpn wvpn nbk tlog
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  fzf-zsh-plugin
   zsh-syntax-highlighting 
-  kubectl-autocomplete
+  fzf-zsh-plugin
 )
 
 source $ZSH/oh-my-zsh.sh
-
-bindkey -v
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -202,3 +200,7 @@ export PROMPT='%F{green}🐧 %F{blue}%~ %F{reset}%# '
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+bindkey -v
+source <(kubectl completion zsh)
+source ~/.kubectl_fzf.plugin.zsh
