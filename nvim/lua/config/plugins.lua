@@ -56,7 +56,20 @@ return {
     end
   },
 
-  'neovim/nvim-lspconfig',
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      -- Nextflow LSP
+      require("lspconfig").nextflow_ls.setup({
+        cmd = { "java", "-jar", "/home/spencer-trinh/.local/share/nextflow-ls/nextflow-language-server.jar" },
+        filetypes = { "groovy" },
+        root_dir = function(fname)
+          return require("lspconfig.util").root_pattern(".git", "nextflow.config")(fname)
+            or vim.loop.cwd()
+        end,
+      })
+    end,
+  },
 
   {
     'tpope/vim-fugitive',
