@@ -37,5 +37,6 @@ formatters = {
     css = { "prettier" },
     scss = { "prettier" },
     python = { "ruff" },
+    groovy = { "lsp" },
     },
 })
