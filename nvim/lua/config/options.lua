@@ -47,5 +47,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- nextflow file type
+vim.filetype.add({
+  extension = {
+    nf = "groovy",
+  },
+})
+
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
