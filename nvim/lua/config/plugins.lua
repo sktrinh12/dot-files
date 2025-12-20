@@ -59,15 +59,20 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      -- Nextflow LSP
-      require("lspconfig").nextflow_ls.setup({
-        cmd = { "java", "-jar", "/home/spencer-trinh/.local/share/nextflow-ls/nextflow-language-server.jar" },
+      vim.lsp.config("nextflow_ls", {
+        cmd = {
+          "java",
+          "-jar",
+          "/home/spencer-trinh/.local/share/nextflow-ls/nextflow-language-server.jar",
+        },
         filetypes = { "groovy" },
         root_dir = function(fname)
-          return require("lspconfig.util").root_pattern(".git", "nextflow.config")(fname)
+          return vim.fs.root(fname, { ".git", "nextflow.config" })
             or vim.loop.cwd()
         end,
       })
+
+      vim.lsp.enable("nextflow_ls")
     end,
   },
 
