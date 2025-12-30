@@ -59,7 +59,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      vim.lsp.config("nextflow_ls", {
+      require("lspconfig").nextflow_ls.setup({
         cmd = {
           "java",
           "-jar",
@@ -67,12 +67,10 @@ return {
         },
         filetypes = { "groovy" },
         root_dir = function(fname)
-          return vim.fs.root(fname, { ".git", "nextflow.config" })
+          return require("lspconfig.util").root_pattern(".git", "nextflow.config")(fname)
             or vim.loop.cwd()
         end,
       })
-
-      vim.lsp.enable("nextflow_ls")
     end,
   },
 
