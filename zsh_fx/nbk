@@ -23,7 +23,7 @@ if [ "\$GREP_CHECK" ]; then
     fi
 else
     echo "starting docker jupyter notebook container..."
-    docker run -d --rm -p 8888:8888 -v \$HOME:/home/jovyan/work jupyter-notebook
+    docker run -d --rm -u root -e GRANT_SUDO=yes -p 8888:8888 -v \$HOME:/home/jovyan/work jupyter-notebook
     GREP_CHECK=\$(docker ps -a --format "{{.Image}}:{{.Status}}" | sed -e 's/:/ | /g' | grep jupyter | awk '{print \$3}')
     echo \$GREP_CHECK
     # CONTR_ID=\$(docker inspect --format="{{.Id}}" jupyter-notebook)
