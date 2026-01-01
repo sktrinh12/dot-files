@@ -59,18 +59,20 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("lspconfig").nextflow_ls.setup({
+      -- 1. Define the configuration using the new native table
+      vim.lsp.config.nextflow_ls = {
         cmd = {
           "java",
           "-jar",
           "/home/spencer-trinh/.local/share/nextflow-ls/nextflow-language-server.jar",
         },
         filetypes = { "groovy" },
-        root_dir = function(fname)
-          return require("lspconfig.util").root_pattern(".git", "nextflow.config")(fname)
-            or vim.loop.cwd()
-        end,
-      })
+        -- Using native Neovim functions instead of lspconfig.util
+        root_dir = vim.fs.root(0, { ".git", "nextflow.config" }) or vim.uv.cwd(),
+      }
+
+      -- 2. Explicitly enable the server
+      vim.lsp.enable("nextflow_ls")
     end,
   },
 
