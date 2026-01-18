@@ -73,6 +73,27 @@ return {
 
       -- 2. Explicitly enable the server
       vim.lsp.enable("nextflow_ls")
+
+      vim.lsp.config.tsserver = {
+           cmd = { "typescript-language-server", "--stdio" },
+           filetypes = {
+             "typescript",
+             "typescriptreact",
+             "javascript",
+             "javascriptreact",
+           },
+           root_dir = vim.fs.root(0, {
+             "tsconfig.json",
+             "package.json",
+             ".git",
+           }),
+           on_attach = function(client)
+             -- Disable formatting if you already use a formatter
+             client.server_capabilities.documentFormattingProvider = false
+           end,
+         }
+
+      vim.lsp.enable("tsserver")
     end,
   },
 
