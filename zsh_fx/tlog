@@ -1,5 +1,4 @@
 tlog() {
     echo "Arguments: $@"
-    output=$(python $HOME/Documents/rch-preludetx/Wall_StreetLLC/Payroll/log_time.py "$@")
-    echo "$output" | jq '.'
+    python $HOME/Documents/rch-preludetx/time-tracker/cli.py "$@"
 }
