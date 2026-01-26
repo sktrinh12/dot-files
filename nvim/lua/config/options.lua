@@ -52,6 +52,9 @@ vim.filetype.add({
   extension = {
     nf = "groovy",
   },
+  pattern = {
+    [".*%.nf%.test"] = "groovy",
+  },
 })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
