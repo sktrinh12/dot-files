@@ -59,7 +59,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      -- 1. Define the configuration using the new native table
+      -- Use the new 0.11+ API
       vim.lsp.config.nextflow_ls = {
         cmd = {
           "java",
@@ -67,32 +67,27 @@ return {
           "/home/spencer-trinh/.local/share/nextflow-ls/nextflow-language-server.jar",
         },
         filetypes = { "groovy" },
-        -- Using native Neovim functions instead of lspconfig.util
         root_dir = vim.fs.root(0, { ".git", "nextflow.config" }) or vim.uv.cwd(),
       }
-
-      -- 2. Explicitly enable the server
       vim.lsp.enable("nextflow_ls")
 
       vim.lsp.config.tsserver = {
-           cmd = { "typescript-language-server", "--stdio" },
-           filetypes = {
-             "typescript",
-             "typescriptreact",
-             "javascript",
-             "javascriptreact",
-           },
-           root_dir = vim.fs.root(0, {
-             "tsconfig.json",
-             "package.json",
-             ".git",
-           }),
-           on_attach = function(client)
-             -- Disable formatting if you already use a formatter
-             client.server_capabilities.documentFormattingProvider = false
-           end,
-         }
-
+        cmd = { "typescript-language-server", "--stdio" },
+        filetypes = {
+          "typescript",
+          "typescriptreact",
+          "javascript",
+          "javascriptreact",
+        },
+        root_dir = vim.fs.root(0, {
+          "tsconfig.json",
+          "package.json",
+          ".git",
+        }),
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = false
+        end,
+      }
       vim.lsp.enable("tsserver")
     end,
   },
@@ -137,7 +132,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "hrsh7th/nvim-cmp",
     },
-    cmd = { "CodeCompanion", "CodeCompanionChat" },
+    lazy = false,
     config = function()
       require("config.plugin_config.codecompanion")
     end,
