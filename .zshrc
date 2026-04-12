@@ -68,7 +68,6 @@ alias gc="git commit"
 alias tf='terraform'
 alias zs="source $HOME/.zshrc"
 alias zz="vi $HOME/.zshrc"
-alias teams="$HOME/Documents/scripts/teams.sh"
 alias vpn="$HOME/Documents/scripts/remote_vpn.sh"
 alias mvpn="$HOME/Documents/scripts/terraform/wireguard-ec2/config/main.sh"
 alias check="$HOME/Documents/scripts/startup_curl.sh"
@@ -204,3 +203,13 @@ export NVM_DIR="$HOME/.nvm"
 bindkey -v
 source <(kubectl completion zsh)
 source ~/.kubectl_fzf.plugin.zsh
+
+# bun completions
+[ -s "/home/spencer-trinh/.bun/_bun" ] && source "/home/spencer-trinh/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# opencode
+export PATH=/home/spencer-trinh/.opencode/bin:$PATH
