@@ -14,23 +14,15 @@ require("codecompanion").setup({
           },
           schema = {
             model = {
-              default = "deepseek/deepseek-r1-0528:free",  -- Changed this
+              default = "openrouter/free",
               choices = {
                 -- Updated with current working free models
-                "xiaomi/mimo-v2-flash:free",
-                "mistralai/devstral-2512:free",
-                "tngtech/deepseek-r1t2-chimera:free",
-                "z-ai/glm-4.5-air:free",
-                "deepseek/deepseek-r1-0528:free",
-                "qwen/qwen3-coder:free",
-                "meta-llama/llama-3.3-70b-instruct:free",
-                "google/gemma-3-27b-it:free",
-                "nvidia/nemotron-3-nano-30b-a3b:free",
-                "openai/gpt-oss-120b:free",
-                "google/gemini-2.0-flash-exp:free",
-                "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
-                "nousresearch/hermes-3-llama-3.1-405b:free",
-                "openai/gpt-oss-20b:free",
+              "openrouter/free",
+              "mistralai/devstral-2512:free",
+              "meta-llama/llama-3.3-70b-instruct:free",
+              "stepfun/step-3.5-flash:free",
+              "arcee-ai/trinity-large-preview:free",
+              "nvidia/nemotron-3-nano-30b-a3b:free",
               },
             },
           },
@@ -38,7 +30,7 @@ require("codecompanion").setup({
       end,
     },
   },
-  interactions = {
+  strategies = {
     chat = { adapter = "openrouter" },
     inline = { adapter = "openrouter" },
   },
