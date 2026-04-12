@@ -1,4 +1,8 @@
 require('fzf-lua').setup({
+  files = {
+    -- This overrides the default command to include ignored files
+    cmd = "rg --files --column --line-number --no-heading --color=always --smart-case --max-columns=4096 --e --hidden --no-ignore -g '!.git/'",
+  },
   fzf_opts = { ["--wrap"] = true },
   winopts = {
     preview = {
