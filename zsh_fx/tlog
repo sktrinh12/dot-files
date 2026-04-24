@@ -1,4 +1,4 @@
 tlog() {
     echo "Arguments: $@"
-    $HOME/miniconda3/envs/tlog/bin/python $HOME/Documents/rch-preludetx/time-tracker/cli.py "$@"
+    $HOME/miniconda3/envs/tlog/bin/python $HOME/Documents/work/time-tracker/cli.py "$@"
 }
