@@ -58,6 +58,7 @@ alias vi='nvim'
 alias k='kubectl'
 alias cow='$HOME/Documents/scripts/dot-files/zsh_fx/cowsay-prompt.sh'
 alias gp="git push origin main"
+alias gd="git diff ${1}"
 alias gco="git checkout ${1} ${2}"
 alias gpl="git pull ${1} ${2}"
 alias grb="git rebase ${1} ${2}"
@@ -136,6 +137,8 @@ export EDITOR='nvim'
 
 # Enable fzf key bindings and completion
 
+source $ZSH/oh-my-zsh.sh
+
 typeset -U PATH fpath
 fpath=(~/zsh_fx "${fpath[@]}")
 
@@ -152,8 +155,6 @@ plugins=(
   zsh-syntax-highlighting 
   fzf-zsh-plugin
 )
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
