@@ -1,4 +1,3 @@
-# dri [FUZZY PATTERN] - Choose a docker image to remove
 dri() {
-  docker images | sed '1d' | fzf -m | awk '{print $3}' | xargs docker rmi
+  docker images --format "{{.Repository}}:{{.Tag}}\t{{.ID}}\t{{.Size}}" | fzf -m | awk -F'\t' '{print $2}' | xargs -r docker rmi
 }
