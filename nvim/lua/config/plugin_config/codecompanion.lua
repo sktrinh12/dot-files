@@ -2,27 +2,16 @@ require("codecompanion").setup({
   adapters = {
     http = {
       openrouter = function()
-        return require("codecompanion.adapters").extend("openai_compatible", {
-          env = {
-            url = "https://openrouter.ai/api",
-            api_key = "OPENROUTER_API_KEY",
-            chat_url = "/v1/chat/completions",
-          },
-          headers = {
-            ["HTTP-Referer"] = "https://github.com/olimorris/codecompanion.nvim",
-            ["X-Title"] = "codecompanion.nvim",
-          },
+        return require("codecompanion.adapters").extend("openrouter", {
           schema = {
             model = {
-              default = "openrouter/free",
+              default = "deepseek/deepseek-chat", -- Primary low-cost workhorse (~$0.27/1M input)
               choices = {
-                -- Updated with current working free models
-              "openrouter/free",
-              "mistralai/devstral-2512:free",
-              "meta-llama/llama-3.3-70b-instruct:free",
-              "stepfun/step-3.5-flash:free",
-              "arcee-ai/trinity-large-preview:free",
-              "nvidia/nemotron-3-nano-30b-a3b:free",
+                "deepseek/deepseek-chat",             -- DeepSeek V3/V4 (Fast & extremely cheap)
+                "deepseek/deepseek-r1",               -- DeepSeek R1 (For complex logic / heavy math)
+                "qwen/qwen-2.5-coder-32b-instruct",  -- Excellent code-specific model
+                "anthropic/claude-3.5-haiku",         -- Fast, budget-friendly option from Anthropic
+                "google/gemini-2.5-flash",            -- Lightning fast with huge context
               },
             },
           },
@@ -30,11 +19,12 @@ require("codecompanion").setup({
       end,
     },
   },
-  strategies = {
+  interactions = {
     chat = { adapter = "openrouter" },
     inline = { adapter = "openrouter" },
+    cmd = { adapter = "openrouter" },
   },
   opts = {
-    log_level = "DEBUG",
+    log_level = "ERROR", -- Changed from DEBUG to avoid massive log files during editing
   },
 })
