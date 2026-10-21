@@ -1,44 +1,65 @@
 require("codecompanion").setup({
-  adapters = {
-    http = {
-      openrouter = function()
-        return require("codecompanion.adapters").extend("openrouter", {
-          schema = {
-            model = {
-              default = "deepseek/deepseek-chat", -- Primary low-cost workhorse (~$0.27/1M input)
-              choices = {
-                "deepseek/deepseek-chat",             -- DeepSeek V3/V4 (Fast & extremely cheap)
-                "deepseek/deepseek-r1",               -- DeepSeek R1 (For complex logic / heavy math)
-                "qwen/qwen-2.5-coder-32b-instruct",  -- Excellent code-specific model
-                "anthropic/claude-3.5-haiku",         -- Fast, budget-friendly option from Anthropic
-                "google/gemini-2.5-flash",            -- Lightning fast with huge context
-                -- Free tier (12 picks)
-                "nvidia/nemotron-3.5-super-vl:free",
-                "nvidia/nemotron-3.5-lightning:free",
-                "poolside/laguna-s-2.1:free",
-                "nvidia/nemotron-3-super-120b-a12b:free",
-                "dots-studio/dots-3-note-preview:free",
-                "thinkingmachines/inkling:free",
-                "cohere/north-mini-code:free",
-                "thinkingmachines/inkling-small-20260730:free",
-                "poolside/laguna-xs-2.1:free",
-                "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-                "google/gemma-4-26b-a4b-it:free",
+    adapters = {
+      http = {
+        openrouter = function()
+          return require("codecompanion.adapters").extend("openrouter", {
+            env = {
+              api_key = "",
+            },
+            schema = {
+              model = {
+                default = "nvidia/nemotron-3.5-super-vl:free",
+                choices = {
+                  "qwen/qwen-2.5-coder-32b-instruct",  -- Excellent code-specific model [PAID]
+                  "anthropic/claude-3.5-haiku",         -- Fast, budget-friendly option from Anthropic [PAID]
+                  "nvidia/nemotron-3.5-super-vl:free",
+                  "nvidia/nemotron-3.5-lightning:free",
+                  "poolside/laguna-s-2.1:free",
+                  "nvidia/nemotron-3-super-120b-a12b:free",
+                  "dots-studio/dots-3-note-preview:free",
+                  "thinkingmachines/inkling:free",
+                  "cohere/north-mini-code:free",
+                  "thinkingmachines/inkling-small-20260730:free",
+                  "poolside/laguna-xs-2.1:free",
+                  "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+                  "google/gemma-4-26b-a4b-it:free",
+                },
               },
             },
-          },
-        })
-      end,
+          })
+        end,
+
+        litellm = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            name = "litellm",
+            url = "http://127.0.0.1:4000/v1/chat/completions",
+            env = {
+              api_key = "",
+            },
+            schema = {
+              model = {
+                default = "deepseek/deepseek-chat",
+                choices = {
+                  "deepseek/deepseek-chat",
+                  "deepseek/deepseek-r1",
+                  "gemini/gemini-2.5-flash",
+                  "glm-4.7-flash",
+                  "dashscope/qwen3-coder-flash",
+                },
+              },
+            },
+          })
+        end,
+      },
     },
-  },
-  interactions = {
-    chat = { adapter = "openrouter" },
-    inline = { adapter = "openrouter" },
-    cmd = { adapter = "openrouter" },
-  },
-  opts = {
-    log_level = "ERROR", -- Changed from DEBUG to avoid massive log files during editing
-  },
+    interactions = {
+      chat = { adapter = "litellm" },
+      inline = { adapter = "litellm" },
+      cmd = { adapter = "litellm" },
+    },
+    opts = {
+      log_level = "ERROR",
+    },
   prompt_library = {
     ["Log work notes"] = {
       interaction = "chat",
