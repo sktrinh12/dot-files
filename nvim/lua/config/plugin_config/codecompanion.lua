@@ -70,6 +70,10 @@ require("codecompanion").setup({
         auto_submit = true,
         stop_context_insertion = true,
         ignore_system_prompt = true,
+        adapter = {
+            name = "openrouter",
+            model = "google/gemma-4-26b-a4b-it:free",
+          },
       },
       prompts = {
         {
