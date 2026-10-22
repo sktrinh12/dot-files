@@ -13,31 +13,15 @@ vim.opt.cursorline = true
 vim.opt.clipboard = "unnamedplus"
 
 
--- clear serach history
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
-
 vim.cmd [[ set noswapfile ]]
 
--- Navigate to the next buffer
-vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
-
--- Navigate to the previous buffer
-vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
 
 -- Function to reload Neovim configuration
 function _G.reload_config()
-  vim.cmd('source ~/.config/nvim/init.lua')
-  print("Configuration reloaded!")
+  vim.cmd('source $MYVIMRC') -- Use $MYVIMRC for reliable sourcing of the main init.lua
+  vim.notify("Neovim configuration reloaded!", vim.log.levels.INFO) -- Using vim.notify for better feedback
 end
 
--- Key mapping to reload configuration
-vim.api.nvim_set_keymap('n', '<leader>l', [[:lua reload_config()<CR>]], { noremap = true, silent = true })
-
--- Key mapping to change directory and open init.lua
-vim.api.nvim_set_keymap('n', '<leader>cd', ':cd ~/.config/nvim/lua/config<CR>:e options.lua<CR>', { noremap = true, silent = true })
-
--- key map google chrome browser open url link
-vim.api.nvim_set_keymap("n", "gx", [[:lua os.execute('google-chrome ' .. vim.fn.expand('<cfile>'))<CR>]], { noremap = true, silent = true })
 
 -- Set the commentstring for SQL files
 vim.api.nvim_create_autocmd("FileType", {
@@ -45,7 +29,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.bo.commentstring = "-- %s"
   end,
-})
+
 
 -- nextflow file type
 vim.filetype.add({
@@ -56,6 +40,3 @@ vim.filetype.add({
     [".*%.nf%.test"] = "groovy",
   },
 })
-
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
