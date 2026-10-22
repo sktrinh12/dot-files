@@ -6,8 +6,8 @@ ts.setup()
 
 -- 2. Define the parsers you want, including 'markdown_inline'
 local parsers = {
-  "bash", "javascript", "typescript", "python", "sql", "groovy",
-  "markdown", "markdown_inline", -- Required for full markdown highlighting
+  "bash", "javascript", "typescript", "python", "sql", "groovy", "yaml",
+  "markdown", "markdown_inline", "json"
 }
 
 -- 3. Filter out 'jsonc' to avoid the update error
