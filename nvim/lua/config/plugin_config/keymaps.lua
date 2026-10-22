@@ -27,3 +27,23 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 -- intellisense
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
+
+-- clear serach history
+vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+
+-- Navigate to the next buffer
+vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
+
+-- Navigate to the previous buffer
+vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>l', [[:lua _G.reload_config()<CR>]], { noremap = true, silent = true })
+-- Key mapping to change directory and open options.lua
+-- Corrected path to point to your actual dot-files location.
+vim.api.nvim_set_keymap('n', '<leader>cd', ':cd $HOME/Documents/dot-files/nvim/lua/config<CR>:e options.lua<CR>', { noremap = true, silent = true })
+
+-- key map google chrome browser open url link
+vim.api.nvim_set_keymap("n", "gx", [[:lua os.execute('google-chrome ' .. vim.fn.expand('<cfile>'))<CR>]], { noremap = true, silent = true })
+
+-- Expand 'cc' into 'CodeCompanion' in the command line
+vim.cmd([[cab cc CodeCompanion]])
+
