@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.bo.commentstring = "-- %s"
   end,
-
+})
 
 -- nextflow file type
 vim.filetype.add({
