@@ -12,6 +12,8 @@ vim.opt.expandtab = true
 vim.opt.cursorline = true
 vim.opt.clipboard = "unnamedplus"
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.cmd [[ set noswapfile ]]
 
@@ -40,3 +42,15 @@ vim.filetype.add({
     [".*%.nf%.test"] = "groovy",
   },
 })
+
+-- Enable spell checking for specific file types (markdown, html, text)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "html", "markdown", "text" },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
+
+vim.cmd [[
+  highlight SpellBad cterm=undercurl guifg=#FF6F61 guibg=NONE gui=undercurl
+]]
