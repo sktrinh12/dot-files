@@ -38,13 +38,12 @@ require("codecompanion").setup({
             },
             schema = {
               model = {
-                default = "deepseek/deepseek-chat",
+                default = "gemini/gemini-2.5-flash",
                 choices = {
                   "deepseek/deepseek-chat",
                   "deepseek/deepseek-r1",
                   "gemini/gemini-2.5-flash",
                   "glm-4.7-flash",
-                  "dashscope/qwen3-coder-flash",
                 },
               },
             },
