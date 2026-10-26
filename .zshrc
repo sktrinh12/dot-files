@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export OPENROUTER_API_KEY=$(cat ~/Documents/creds/openrouter)
+export WORK=/home/spencer-trinh/Documents/work/work-notes/preludetx
 export NODEJS_HOME=/usr/local/nodejs
 export FIB_SEQ="1 2 3 5 8 13 21 34 55 89"
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/nvim-linux64/bin:$NODEJS_HOME/bin:/opt/sqldeveloper/sqldeveloper/sqldeveloper/bin:/usr/local/go/bin:$HOME/sratoolkit.3.3.0-ubuntu64/bin:$PATH
@@ -51,6 +51,7 @@ alias tor='() {
   cd "$HOME/tor-browser" && ./start-tor-browser.desktop;
   cd "$OLD_DIR";
 }'
+alias vpn-time='bash -c "source $HOME/Documents/scripts/terraform/wireguard-ec2/config/main.sh >/dev/null 2>&1 && DB_NAME=\"vpn.db\" get_elapsed_time"'
 alias nf='nextflow'
 alias ..='cd ..'
 alias cat='batcat'
@@ -137,7 +138,6 @@ export EDITOR='nvim'
 
 # Enable fzf key bindings and completion
 
-source $ZSH/oh-my-zsh.sh
 
 typeset -U PATH fpath
 fpath=(~/zsh_fx "${fpath[@]}")
@@ -156,6 +156,7 @@ plugins=(
   fzf-zsh-plugin
 )
 
+source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
