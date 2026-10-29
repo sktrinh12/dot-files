@@ -51,6 +51,18 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.cmd [[
-  highlight SpellBad cterm=undercurl guifg=#FF6F61 guibg=NONE gui=undercurl
-]]
+-- Set and enforce custom spell check colors
+local function set_spell_hl()
+  vim.api.nvim_set_hl(0, "SpellBad", {
+    fg = "#FF6F61",     -- Colors text red to bypass terminal undercurl limitations
+    undercurl = true,
+    sp = "#FF6F61",     -- Sets undercurl color for terminals that support it
+  })
+end
+
+set_spell_hl()
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = set_spell_hl,
+})
