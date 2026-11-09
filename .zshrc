@@ -57,6 +57,7 @@ alias ..='cd ..'
 alias cat='batcat'
 alias vi='nvim'
 alias k='kubectl'
+alias tn='tmux split-window -c "#{pane_current_path}"'
 alias cow='$HOME/Documents/scripts/dot-files/zsh_fx/cowsay-prompt.sh'
 alias gp="git push origin main"
 alias gd="git diff ${1}"
